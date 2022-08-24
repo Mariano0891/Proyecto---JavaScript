@@ -16,6 +16,38 @@ header{
     color: gray;
 }
 
+.header__boton {
+    background-color: grey;
+    border-radius: 5px;
+}
+
+.header__boton:hover {
+    background-color: lightgray;
+}
+
+
+.header__opcionesRegistro {
+    display: inline;
+    font-size: small;
+}
+
+a {
+    text-decoration: none;
+    border:solid 1px;
+    border-radius: 5px;
+    color: grey;
+    padding: 2px;
+    transition: all 1s;
+}
+
+a:hover {
+    background-color: grey;
+    color: black;
+}
+.header__recuperoContrasena {
+    margin-right: 0px;
+}
+
 body {
     background: grey;
 }

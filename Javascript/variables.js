@@ -107,7 +107,6 @@ let combo1 = new combo (1, "Pochoclo + bebida", 900);
 let combo2 = new combo (2, "Nachos + bebida", 1200);
 let combo3 = new combo (3, "Golosinas + bebida", 1000);
 let combo4 = new combo (4, "Snack + bebida", 1200);
-let combo5 = new combo (5, "No comprar", 0);
 
 let combos = [combo1, combo2, combo3, combo4];
 

@@ -25,6 +25,10 @@
                 <a href="" class="header__recuperoContrasena">Olvido su contraseña</a>
             </div>
         </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Su compra  
+        </button>
     </header>
 
     <div class="titulo">
@@ -33,18 +37,40 @@
     <div id="container__peliculas">
         
     </div>
-    
-    <div class="compra__combo">
-        <div id="container__pelicula">
-        
-        </div>
-        <div id="container__combos">     
 
-        </div>
+    <div id="container__dias">
+
+    </div>
+
+    <div id="container__combos">     
+
+    </div>
+    
+    <div id="container__tamaños">     
+
     </div>
 
     <div id="formulario__registro">
         
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Su compra</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="container__compra">
+            
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+        </div>
     </div>
 
 

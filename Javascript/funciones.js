@@ -1,68 +1,144 @@
-/*const mostrarPeliculas = () => {
-   let mensaje = "Seleccione que pelicula desea ver:"
-   peliculas.forEach (pelicula =>{
-    mensaje += `
-    - ${pelicula.id}: ${pelicula.titulo} - ${pelicula.genero} - Clas.: ${pelicula.clasificacion}`
-   })
-    let opcion = Number (prompt(mensaje))
-    return opcion;
+function cargarPeliculas() {
+    peliculas.forEach(pelicula => {
+        let div = document.createElement('div')
+        div.className = 'pelicula'
+        div.innerHTML = `<div class="card" style="width: 18rem;">
+                            <img src="${pelicula.imagen}" class="card-img-top" alt="${pelicula.titulo}">
+                            <div class="card-body">
+                                <h5 class="card-title">${pelicula.titulo}</h5>
+                                <p class="card-text">${pelicula.genero}</p>
+                                <p class="card-text">${pelicula.clasificacion}</p>
+                                <a href="#" class="btn btn-primary" id="botonComprar${pelicula.id}">Comprar</a>
+                            </div>
+                        </div>`
+                    
+    containerPeliculas.appendChild(div)
+
+    let botonComprar = document.getElementById (`botonComprar${pelicula.id}`)
+    botonComprar.addEventListener ('click', () => {
+        console.log(pelicula.titulo)
+        agregarPelicula(pelicula.id)
+        document.getElementById('container__peliculas').style.display = 'none'
+        /*cargarDiasPeliculas (funcionesPorPeliculas)*/
+        cargarCombos (combos)
+    })
+
+    })
 }
 
-const entradas = () => {
-    let mensaje = "Cuantas entradas desea comprar?"
-    let cantidadEntradas = Number (prompt (mensaje))
-    return cantidadEntradas;
+function cargarCombos () {
+    combos.forEach(combo => {
+        let div = document.createElement('div')
+        div.className = 'combo'
+        div.innerHTML = `<div class="card" style="width: 18rem;">
+                            <h5 class="card-header">Combo N°${combo.id}</h5>
+                            <div class="card-body">
+                                <h5 class="card-title">${combo.descripcion}</h5>
+                                <p class="card-text">$${combo.precio}</p>
+                                <a href="#" class="btn btn-primary" id="botonCombo${combo.id}">Comprar</a>
+                            </div>
+                        </div>`
+    containerCombos.appendChild(div)
+    let botonCombo = document.getElementById (`botonCombo${combo.id}`)
+    botonCombo.addEventListener ('click', () => {
+        console.log(combo.descripcion)
+        document.getElementById('container__peliculas').style.display = 'none'
+        /*cargarTamaños (tamaños)*/
+        agregarCombo (combo.id)
+    })
+    })
 }
 
-const mostrarCombos = () => {
-    let mensaje = "Desea comprar alguno de nuestros combos?:"
-    combos.forEach (combo =>{
-        mensaje += `
-        - ${combo.id}: ${combo.descripcion} - Precio: $ ${combo.precio}`
+function cargarTamaños () {
+    tamaños.forEach(tamaño => {
+        let div = document.createElement('div')
+        div.className = 'tamaño'
+        div.innerHTML = `<div class="card" style="width: 18rem;">
+                            <h5 class="card-header">${tamaño.especificacion}</h5>
+                            <div class="card-body">
+                                <a href="#" class="btn btn-primary" id="botonTamaño${tamaño.id}">Comprar</a>
+                            </div>
+                        </div>`
+    containerTamaños.appendChild(div)
+    let botonTamaño = document.getElementById (`botonTamaño${tamaño.id}`)
+    botonTamaño.addEventListener ('click', () => {
+        console.log(tamaño.especificacion)
+        document.getElementById('container__peliculas').style.display = 'none'
+        let factorModificador = tamaño.factorModificador
+        /*agregarCombo (combo.id)*/
     })
-    mensaje += `
-        - 0: No comprar`
-    let seleccion = Number (prompt(mensaje))
-    return seleccion;
+    })
 }
 
-const mostrarTamaños = () => {
-    let mensaje = "De que tamaño desea su combo?"
-    tamaños.forEach (tamaño =>{
-        mensaje += `
-        - ${tamaño.id}: ${tamaño.especificacion}`
-    })
-    let eleccion = Number (prompt(mensaje));
-    return eleccion;
+
+function agregarPelicula (id) {
+    let peliculaAgregar = peliculas.find(pelicula=> pelicula.id == id)
+    resumenCompra.push(peliculaAgregar);
+    console.log (resumenCompra)
+    mostrarCompra(peliculaAgregar)
 }
 
-const resumenCombos = () => {
-    let mensajeResumen = "";
-    compraCombos.forEach (comboSeleccionado =>{
-        mensajeResumen += `
-        - ${comboSeleccionado.descripcion} - ${comboSeleccionado.tamaño} - $ ${comboSeleccionado.precio * comboSeleccionado.factorModificador}`
-    })
-    mensajeResumen += `
-        - Total combos: $${compraCombos.reduce((total,comboSeleccionado)=>total + (comboSeleccionado.precio * comboSeleccionado.factorModificador),0)}`
-    alert (mensajeResumen)
+function mostrarCompra(peliculaAgregar){
+    let div = document.createElement ('div')
+    div.className = 'pelicula__seleccionada'
+    div.innerHTML= `<p>Su pelicula seleccionada es: ${peliculaAgregar.titulo}</p>`
+    containerCompra.appendChild(div)
 }
-const resumenCompra = () => {
-    let mensajeResumenCompra = "";
-    compra.forEach (peliculaElegida => {
-        mensajeResumenCompra += `
-        Su compra quedo conformada de la siguiente forma:
-        - Pelicula seleccionada: ${peliculaElegida.titulo}
-        - Cantidad de entradas: ${peliculaElegida.entradas}
-            - Total entradas : $ ${peliculaElegida.costoEntradas}
-        Combos:`
-    compraCombos.forEach (comboSeleccionado =>{
-        mensajeResumenCompra += `
-        - ${comboSeleccionado.descripcion} - ${comboSeleccionado.tamaño} - $ ${comboSeleccionado.precio * comboSeleccionado.factorModificador}`
+
+function agregarCombo (id) {
+    let comboAgregar = combos.find(combo=> combo.id == id)
+    /*this.precio = this.precio * factorModificador*/
+    resumenCompra.push(comboAgregar)
+    mostrarCombo(comboAgregar)   
+}
+
+function mostrarCombo (comboAgregar){
+    let div = document.createElement ('div')
+    div.className = 'combo__seleccionado'
+    div.innerHTML= `<p>${comboAgregar.descripcion}</p>
+                    <p>${comboAgregar.precio}</p>`
+    containerCompra.appendChild(div)
+}
+
+/*function cargarDiasPeliculas () {
+    let diasPeliculas = funcionesPorPeliculas.filter((funcionPorPelicula) => funcionPorPelicula.titulo == pelicula.titulo)
+    diasPeliculas.forEach(diaPelicula => {
+        let div = document.createElement ('div')
+        div.className = 'dia'
+        div.innerHTML = `<div class="card w-75">
+                            <div class="card-body">
+                            <h5 class="card-title">${dia}</h5>
+                            <p class="card-text">a</p>
+                            <a href="#" class="btn btn-primary">Seleccionar</a>
+                            </div>
+                        </div>`
+    containerDias.appendChild(div)
     })
-    mensajeResumenCompra += `
-            - Total combos: $${compraCombos.reduce((total,comboSeleccionado)=>total + (comboSeleccionado.precio * comboSeleccionado.factorModificador),0)}`
-})
-    alert (mensajeResumenCompra)
 }*/
 
+/*let linkRegistro = document.getElementById('registrarse')
+linkRegistro.addEventListener ('click', () => {
+    console.log(`Acceso al registro`)
+    document.getElementById('container__peliculas').style.display = 'none'
+    formularioRegistro (linkRegistro)
+})
 
+function formularioRegistro () {
+    let form = document.createElement ('form action="#"')
+    form.className = 'formularioRegistro'
+    form.innerHTML = `<label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" required>
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido">
+                    <label for="email">Mail</label>
+                    <input type="email" id="email" required>
+                    <label for="telefono">Telefono</label>
+                    <input type="tel" id="telefono">
+                    <label for="contraseña" required>Contraseña</label>
+                    <input type="password" id="contraseña">
+                    <label for="repetirContraseña"required>Repita contraseña</label>
+                    <input type="password" id="repitaContraseña">
+                    <input type="submit" value="Enviar" id="botonEnvio">                 
+                `
+    formulario.appendChild(div)
+}*/

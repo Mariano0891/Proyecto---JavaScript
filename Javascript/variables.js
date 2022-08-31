@@ -68,7 +68,7 @@ function crearFunciones () {
         funciones.push (new funcion (dia, horario3.horarioInicio,horario3.capacidad))
         funciones.push (new funcion (dia, horario4.horarioInicio,horario4.capacidad))
     })
-    console.log (funciones)
+    /*console.log (funciones)*/
 }
 
 // Una vez definidos todos los horarios para cada dia se crea un nuevo array donde tendremos por cada pelicula las 4 funciones disponibles por dia
@@ -90,7 +90,7 @@ function crearFuncionesPorPeliculas () {
             funcionesPorPeliculas.push (new funcionPorPelicula (pelicula.titulo, funcion.dia, funcion.horarioInicio, funcion.capacidad))
         })
     })
-    console.log (funcionesPorPeliculas)
+    /*console.log (funcionesPorPeliculas)*/
 }
 
 // Array de combos

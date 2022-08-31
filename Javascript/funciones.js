@@ -75,6 +75,7 @@ function agregarPelicula (id) {
     let peliculaAgregar = peliculas.find(pelicula=> pelicula.id == id)
     resumenCompra.push(peliculaAgregar);
     console.log (resumenCompra)
+    guardarCompra ()
     mostrarCompra(peliculaAgregar)
 }
 
@@ -89,6 +90,7 @@ function agregarCombo (id) {
     let comboAgregar = combos.find(combo=> combo.id == id)
     /*this.precio = this.precio * factorModificador*/
     resumenCompra.push(comboAgregar)
+    guardarCompra ()
     mostrarCombo(comboAgregar)   
 }
 
@@ -98,6 +100,22 @@ function mostrarCombo (comboAgregar){
     div.innerHTML= `<p>${comboAgregar.descripcion}</p>
                     <p>${comboAgregar.precio}</p>`
     containerCompra.appendChild(div)
+}
+
+function guardarCompra () {
+    localStorage.setItem("compraRealizada", JSON.stringify(resumenCompra))
+}
+
+function compraAnterior () {
+    let ultimaCompra = JSON.parse(localStorage.getItem("compraRealizada"));
+    if(ultimaCompra){
+        console.log(ultimaCompra)
+        /*peliculaAgregar = ultimaCompra.slice (0, 1);
+        console.log (peliculaAgregar)
+        resumenCompra.push(peliculaAgregar)
+        console.log(resumenCompra)
+        mostrarCompra(peliculaAgregar)*/
+    }
 }
 
 /*function cargarDiasPeliculas () {

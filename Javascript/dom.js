@@ -19,6 +19,8 @@ crearFuncionesPorPeliculas (peliculas);
 
 cargarPeliculas (peliculas);
 
+compraAnterior ();
+
 
 
 

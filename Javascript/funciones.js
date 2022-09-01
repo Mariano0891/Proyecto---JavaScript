@@ -18,6 +18,13 @@ function cargarPeliculas() {
     botonComprar.addEventListener ('click', () => {
         console.log(pelicula.titulo)
         agregarPelicula(pelicula.id)
+        Toastify({
+            text: "Pelicula seleccionada con exito",
+            offset: {
+              x: '45vw', 
+              y: '50vh', 
+            },
+          }).showToast();
         document.getElementById('container__peliculas').style.display = 'none'
         /*cargarDiasPeliculas (funcionesPorPeliculas)*/
         cargarCombos (combos)
@@ -45,6 +52,13 @@ function cargarCombos () {
         document.getElementById('container__peliculas').style.display = 'none'
         /*cargarTamaños (tamaños)*/
         agregarCombo (combo.id)
+        Toastify({
+            text: "Se agrego el combo a su compra",
+            offset: {
+              x: '45vw', 
+              y: '50vh', 
+            },
+          }).showToast();
     })
     })
 }
@@ -117,6 +131,34 @@ function compraAnterior () {
         mostrarCompra(peliculaAgregar)*/
     }
 }
+
+    
+
+function verificarUsuario (){
+    let botonLogin = document.getElementById (`botonLogin`)
+        botonLogin.addEventListener ('click', () => {
+            let usuarioIngresado = document.getElementById("usuario").value;
+            const verificacion = usuarios.some ((usuario)=>usuario.nombre == usuarioIngresado)
+            if (verificacion == true) {
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: `Bienvenido ${usuarioIngresado}`,
+                    showConfirmButton: true,
+                    timer: 3000,
+                  })
+                console.log(`bienvenido ${usuarioIngresado}`)
+            }
+            else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Usuario incorrecto',
+                  })
+            }
+        })
+}
+
 
 /*function cargarDiasPeliculas () {
     let diasPeliculas = funcionesPorPeliculas.filter((funcionPorPelicula) => funcionPorPelicula.titulo == pelicula.titulo)

@@ -21,6 +21,8 @@ cargarPeliculas (peliculas);
 
 compraAnterior ();
 
+verificarUsuario ();
+
 
 
 

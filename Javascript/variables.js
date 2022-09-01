@@ -132,17 +132,21 @@ let compraCombos = [];
 
 // Array de usuarios
 
-/*let usuarios = [];
+
 
 class usuario {
-    constructor (nombre, apellido, mail, telefono, contraseña, preguntaSeguridad, respuestaSeguridad){
+    constructor (nombre, apellido, mail, telefono, contraseña/*, preguntaSeguridad, respuestaSeguridad*/){
         this.nombre = nombre;
         this. apellido = apellido;
         this.mail = mail;
         this.telefono = telefono;
         this.contraseña = contraseña;
-        this.preguntaSeguridad = preguntaSeguridad;
-        this.respuestaSeguridad = respuestaSeguridad;
+        /*this.preguntaSeguridad = preguntaSeguridad;
+        this.respuestaSeguridad = respuestaSeguridad;*/
     }
-}*/
+}
 
+let usuario1 = new usuario ("admin", "principal", "admin@admin.com.ar", 351-25747410, 123);
+let usuario2 = new usuario ("invitado", "guest", "guest@guest.com.ar", 351-11111111, 1234);
+
+let usuarios = [usuario1, usuario2];

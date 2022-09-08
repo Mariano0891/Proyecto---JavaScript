@@ -17,6 +17,8 @@ crearFunciones ();
 
 crearFuncionesPorPeliculas (peliculas);
 
+crearArraypeliculas (direccionesBusqueda);
+
 cargarPeliculas (peliculas);
 
 compraAnterior ();

@@ -4,7 +4,7 @@ const precioEntradas = 500;
 
 // Array de peliculas
 
-class pelicula{
+/*class pelicula{
     constructor(id, titulo, genero, clasificacion, imagen){
         this.id = id;
         this.titulo = titulo;
@@ -12,8 +12,8 @@ class pelicula{
         this.clasificacion = clasificacion;
         this.imagen = imagen;
     }
-}
-
+}*/
+/*
 let pelicula1 = new pelicula (1, "El perro samurai: la leyenda de Kakamucho", "Animación", "ATP", '/ImagenesPeliculas/ElPerroSamurai.jpg');
 let pelicula2 = new pelicula (2, "Bestia", "Drama", "PM13", '/ImagenesPeliculas/Bestia.jpg');
 let pelicula3 = new pelicula (3, "Tren bala", "Acción", "PM16", '/ImagenesPeliculas/TrenBala.jpg');
@@ -26,6 +26,53 @@ let pelicula9 = new pelicula (9, "Thor: amor y trueno", "Acción", "PM13", '/Ima
 let pelicula10 = new pelicula (10, "Minions: nace un villano", "animación", "ATP", '/ImagenesPeliculas/Minions2.jpg');
 
 let peliculas = [pelicula1, pelicula2, pelicula3, pelicula4, pelicula5, pelicula6, pelicula7, pelicula8, pelicula9, pelicula10];
+*/
+//Fetch y funcion para armado de arrays de peliculas
+let direccionesBusqueda = []
+
+direccionesBusqueda = ['https://api.themoviedb.org/3/movie/438148?api_key=20ed802ba4c45dfee57f4df0dfe0866b&language=es',
+    'https://api.themoviedb.org/3/movie/366672?api_key=20ed802ba4c45dfee57f4df0dfe0866b&language=es',
+    'https://api.themoviedb.org/3/movie/758330?api_key=20ed802ba4c45dfee57f4df0dfe0866b&language=es',
+    'https://api.themoviedb.org/3/movie/756999?api_key=20ed802ba4c45dfee57f4df0dfe0866b&language=es',
+    'https://api.themoviedb.org/3/movie/361743?api_key=20ed802ba4c45dfee57f4df0dfe0866b&language=es',
+    'https://api.themoviedb.org/3/movie/616037?api_key=20ed802ba4c45dfee57f4df0dfe0866b&language=es']
+
+// Creacion del nuevo array de peliculas
+
+function crearArraypeliculas () {
+    direccionesBusqueda.forEach(direccion => {
+        busquedaInformacionPelicula (direccion)
+    })
+}
+
+class pelicula{
+    constructor(id, titulo, tituloOriginal, resumen, imagen){
+        this.id = id;
+        this.titulo = titulo;
+        this.tituloOriginal = tituloOriginal;
+        this.resumen = resumen;
+        this.imagen = imagen;
+    }
+}
+
+let peliculas = []
+
+ function busquedaInformacionPelicula (direccion){
+    fetch(direccion)
+    .then((resp) => resp.json() )
+    .then((data) => {
+        let peliculaNueva = new pelicula (data.id, data.title, data.original_title, data.overview, "https://image.tmdb.org/t/p/w342"+data.poster_path)
+        /*console.log(data)
+        console.log(data.title)
+        console.log(data.original_title)
+        console.log(data.overview)
+        console.log(data.poster_path)*/
+        peliculas.push(peliculaNueva)
+        console.log (peliculas)
+    })
+ }
+
+
 
 // Array de salas y horarios (por el momento lo voy a plantear como si hubiera una sala exclusiva para cada pelicula)
 
@@ -150,3 +197,4 @@ let usuario1 = new usuario ("admin", "principal", "admin@admin.com.ar", 351-2574
 let usuario2 = new usuario ("invitado", "guest", "guest@guest.com.ar", 351-11111111, 1234);
 
 let usuarios = [usuario1, usuario2];
+

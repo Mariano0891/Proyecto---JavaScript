@@ -1,3 +1,22 @@
+
+/*fetch('https://api.themoviedb.org/3/search/movie?api_key=20ed802ba4c45dfee57f4df0dfe0866b&query=thor+amor+trueno&language=es')
+.then((resp) => resp.json() )
+.then((data) => {
+    console.log(data)
+})*/
+
+/*busquedaInformacionPelicula ('https://api.themoviedb.org/3/movie/438148?api_key=20ed802ba4c45dfee57f4df0dfe0866b&language=es')
+/*fetch('https://api.themoviedb.org/3/movie/438148?api_key=20ed802ba4c45dfee57f4df0dfe0866b&language=es')
+.then((resp) => resp.json() )
+.then((data) => {
+    console.log(data)
+    console.log(data.title)
+    console.log(data.original_title)
+    console.log(data.overview)
+})*/
+
+
+
 function cargarPeliculas() {
     peliculas.forEach(pelicula => {
         let div = document.createElement('div')
@@ -6,8 +25,7 @@ function cargarPeliculas() {
                             <img src="${pelicula.imagen}" class="card-img-top" alt="${pelicula.titulo}">
                             <div class="card-body">
                                 <h5 class="card-title">${pelicula.titulo}</h5>
-                                <p class="card-text">${pelicula.genero}</p>
-                                <p class="card-text">${pelicula.clasificacion}</p>
+                                <p class="card-text">${pelicula.tituloOriginal}</p>
                                 <a href="#" class="btn btn-primary" id="botonComprar${pelicula.id}">Comprar</a>
                             </div>
                         </div>`
@@ -158,6 +176,7 @@ function verificarUsuario (){
             }
         })
 }
+
 
 
 /*function cargarDiasPeliculas () {

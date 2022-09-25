@@ -38,12 +38,8 @@ direccionesBusqueda = ['https://api.themoviedb.org/3/movie/438148?api_key=20ed80
     'https://api.themoviedb.org/3/movie/616037?api_key=20ed802ba4c45dfee57f4df0dfe0866b&language=es']
 
 // Creacion del nuevo array de peliculas
+let peliculas = []
 
-function crearArraypeliculas () {
-    direccionesBusqueda.forEach(direccion => {
-        busquedaInformacionPelicula (direccion)
-    })
-}
 
 class pelicula{
     constructor(id, titulo, tituloOriginal, resumen, imagen){
@@ -55,58 +51,41 @@ class pelicula{
     }
 }
 
-let peliculas = []
-
- function busquedaInformacionPelicula (direccion){
-    fetch(direccion)
-    .then((resp) => resp.json() )
-    .then((data) => {
-        let peliculaNueva = new pelicula (data.id, data.title, data.original_title, data.overview, "https://image.tmdb.org/t/p/w342"+data.poster_path)
-        /*console.log(data)
-        console.log(data.title)
-        console.log(data.original_title)
-        console.log(data.overview)
-        console.log(data.poster_path)*/
-        peliculas.push(peliculaNueva)
-        console.log (peliculas)
-    })
- }
-
 
 
 // Array de salas y horarios (por el momento lo voy a plantear como si hubiera una sala exclusiva para cada pelicula)
 
 // Primero creo las variables de horarios
 
-class horario{
+/*class horario{
     constructor(horarioInicio, capacidad){
         this.horarioInicio = horarioInicio;
         this.capacidad = capacidad;
     }
-}
+}*/
 
-let horario1 = new horario (`12:00`, 50);
+/*let horario1 = new horario (`12:00`, 50);
 let horario2 = new horario (`15:00`, 50);
 let horario3 = new horario (`18:00`, 50);
 let horario4 = new horario (`21:00`, 50);
 
-let horarios = [horario1, horario2, horario3, horario4];
+let horarios = [horario1, horario2, horario3, horario4];*/
 
 // Ahora la constante de los dias de la semana
 
-const diasDeLaSemana = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
+/*const diasDeLaSemana = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];*/
 
 // Aqui se crea el array de las funciones por dia donde a cada uno se le cargan todos los horarios de funcion
 
-class funcion{
+/*class funcion{
     constructor(dia, horarioInicio, capacidad){
         this.dia = dia;
         this.horarioInicio = horarioInicio;
         this.capacidad = capacidad;
     }
-}
+}*/
 
-let funciones = []
+/*let funciones = []
 
 function crearFunciones () {
     diasDeLaSemana.forEach(dia => {
@@ -115,59 +94,59 @@ function crearFunciones () {
         funciones.push (new funcion (dia, horario3.horarioInicio,horario3.capacidad))
         funciones.push (new funcion (dia, horario4.horarioInicio,horario4.capacidad))
     })
-    /*console.log (funciones)*/
-}
+    console.log (funciones)
+}*/
 
 // Una vez definidos todos los horarios para cada dia se crea un nuevo array donde tendremos por cada pelicula las 4 funciones disponibles por dia
 
-class funcionPorPelicula{
+/*class funcionPorPelicula{
     constructor(titulo, dia, horarioInicio, capacidad){
         this.titulo = titulo;
         this.dia = dia;
         this.horarioInicio = horarioInicio;
         this.capacidad = capacidad;
     }
-}
+}*/
 
-let funcionesPorPeliculas = []
+/*let funcionesPorPeliculas = []*/
 
-function crearFuncionesPorPeliculas () {
+/*function crearFuncionesPorPeliculas () {
     peliculas.forEach(pelicula => {
         funciones.forEach(funcion => {
             funcionesPorPeliculas.push (new funcionPorPelicula (pelicula.titulo, funcion.dia, funcion.horarioInicio, funcion.capacidad))
         })
     })
-    /*console.log (funcionesPorPeliculas)*/
-}
+    console.log (funcionesPorPeliculas)
+}*/
 
 // Array de combos
 
-class combo {
+/*class combo {
     constructor (id, descripcion, precio){
         this.id = id;
         this.descripcion = descripcion;
         this.precio = precio;
     }
-}
+}*/
 
-let combo1 = new combo (1, "Pochoclo + bebida", 900);
+/*let combo1 = new combo (1, "Pochoclo + bebida", 900);
 let combo2 = new combo (2, "Nachos + bebida", 1200);
 let combo3 = new combo (3, "Golosinas + bebida", 1000);
 let combo4 = new combo (4, "Snack + bebida", 1200);
 
-let combos = [combo1, combo2, combo3, combo4];
+let combos = [combo1, combo2, combo3, combo4];*/
 
 // Array de tamaños de combos
 
-class tamaño {
+/*class tamaño {
     constructor (id, especificacion, factorModificador){
         this.id = id;
         this.especificacion = especificacion;
         this.factorModificador = factorModificador;
     }
-}
+}*/
 
-let tamaño1 = new tamaño (1, "Regular", 1);
+/*let tamaño1 = new tamaño (1, "Regular", 1);
 let tamaño2 = new tamaño (2, "Mediano", 1.15);
 let tamaño3 = new tamaño (3, "Grande", 1.3);
 
@@ -175,26 +154,26 @@ let tamaños = [tamaño1, tamaño2, tamaño3];
 
 let compra  = [];
 
-let compraCombos = [];
+let compraCombos = [];*/
 
 // Array de usuarios
 
 
 
-class usuario {
-    constructor (nombre, apellido, mail, telefono, contraseña/*, preguntaSeguridad, respuestaSeguridad*/){
+/*class usuario {
+    constructor (nombre, apellido, mail, telefono, contraseña, preguntaSeguridad, respuestaSeguridad){
         this.nombre = nombre;
         this. apellido = apellido;
         this.mail = mail;
         this.telefono = telefono;
         this.contraseña = contraseña;
-        /*this.preguntaSeguridad = preguntaSeguridad;
-        this.respuestaSeguridad = respuestaSeguridad;*/
+        this.preguntaSeguridad = preguntaSeguridad;
+        this.respuestaSeguridad = respuestaSeguridad;
     }
-}
+}*/
 
-let usuario1 = new usuario ("admin", "principal", "admin@admin.com.ar", 351-25747410, 123);
+/*let usuario1 = new usuario ("admin", "principal", "admin@admin.com.ar", 351-25747410, 123);
 let usuario2 = new usuario ("invitado", "guest", "guest@guest.com.ar", 351-11111111, 1234);
 
-let usuarios = [usuario1, usuario2];
+let usuarios = [usuario1, usuario2];*/
 

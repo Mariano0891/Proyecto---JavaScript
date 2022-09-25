@@ -19,6 +19,7 @@ header{
 .header__boton {
     background-color: grey;
     border-radius: 5px;
+    content: "\f145";
 }
 
 .header__boton:hover {

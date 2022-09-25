@@ -18,19 +18,21 @@
 
 
 function cargarPeliculas() {
-    peliculas.forEach(pelicula => {
+    peliculas.forEach(peliculaNueva => {
         let div = document.createElement('div')
         div.className = 'pelicula'
         div.innerHTML = `<div class="card" style="width: 18rem;">
-                            <img src="${pelicula.imagen}" class="card-img-top" alt="${pelicula.titulo}">
+                            <img src="https://image.tmdb.org/t/p/w342${peliculaNueva.imagen}" class="card-img-top" alt="${peliculaNueva.titulo}">
                             <div class="card-body">
-                                <h5 class="card-title">${pelicula.titulo}</h5>
-                                <p class="card-text">${pelicula.tituloOriginal}</p>
-                                <a href="#" class="btn btn-primary" id="botonComprar${pelicula.id}">Comprar</a>
+                                <h5 class="card-title">${peliculaNueva.titulo}</h5>
+                                <p class="card-text">${peliculaNueva.tituloOriginal}</p>
+                                <a href="#" class="btn btn-primary" id="botonComprar${peliculaNueva.id}">Comprar</a>
                             </div>
                         </div>`
                     
     containerPeliculas.appendChild(div)
+
+    console.log(peliculas)
 
     let botonComprar = document.getElementById (`botonComprar${pelicula.id}`)
     botonComprar.addEventListener ('click', () => {
@@ -177,6 +179,26 @@ function verificarUsuario (){
         })
 }
 
+function crearArrayPeliculas () {
+    direccionesBusqueda.forEach(direccion => {
+        busquedaInformacionPelicula (direccion)
+    })
+    console.log(peliculas)
+}
+
+function busquedaInformacionPelicula (direccion){
+    fetch(direccion)
+    .then((resp) => resp.json() )
+    .then((data) => {
+        let peliculaNueva = new pelicula (data.id, data.title, data.original_title, data.overview, data.poster_path)
+        /*console.log(data)*/
+        /*console.log(data.title)
+        console.log(data.original_title)
+        console.log(data.overview)
+        console.log(data.poster_path)*/
+        peliculas.push(peliculaNueva)
+    })
+ }
 
 
 /*function cargarDiasPeliculas () {

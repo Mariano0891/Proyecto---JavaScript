@@ -13,15 +13,15 @@ const containerCompra = document.getElementById('container__compra');
 const containerTamaños = document.getElementById('container__tamaños');
 
 
-crearFunciones ();
+/*crearFunciones ();*/
 
-crearFuncionesPorPeliculas (peliculas);
+/*crearFuncionesPorPeliculas (peliculas);*/
 
-crearArraypeliculas (direccionesBusqueda);
+crearArrayPeliculas ();
 
-cargarPeliculas (peliculas);
+cargarPeliculas ();
 
-compraAnterior ();
+/*compraAnterior ();*/
 
 verificarUsuario ();
 

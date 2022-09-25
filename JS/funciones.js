@@ -1,20 +1,30 @@
+const containerPeliculasTitulo = document.getElementById('container__peliculasTitulo')
+
 const containerPeliculas = document.getElementById('container__peliculas');
 
 function cargarPeliculas() {
-    peliculas.forEach(pelicula => {
+    document.getElementById('container__login').style.display = 'none'
+    nuevoPeliculas.forEach(nuevoPelicula => {
         let div = document.createElement('div')
         div.className = 'pelicula'
         div.innerHTML = `<div class="card" style="width: 18rem;">
-                            <img src="${pelicula.imagen}" class="card-img-top" alt="${pelicula.titulo}">
+                            <img src="https://image.tmdb.org/t/p/w342${nuevoPelicula.imagen}" class="card-img-top" alt="${nuevoPelicula.titulo}">
                             <div class="card-body">
-                                <h5 class="card-title">${pelicula.titulo}</h5>
-                                <p class="card-text">${pelicula.genero}</p>
-                                <p class="card-text">${pelicula.clasificacion}</p>
+                                <h5 class="card-title">${nuevoPelicula.titulo}</h5>
+                                <p class="card-text">${nuevoPelicula.tituloOriginal}</p>
                                 <a href="#" class="btn btn-primary" id="botonComprar${pelicula.id}">Comprar</a>
                             </div>
                         </div>`
     containerPeliculas.appendChild(div)
     })
+    
+}
+
+function cargarTituloPeliculas () {
+    let div = document.createElement ('div')
+    div.className = "peliculas__titulo"
+    div.innerHTML = `<h2>Peliculas en Cartelera</h2>`
+    containerPeliculasTitulo.appendChild(div)
 }
 
 let nuevoPeliculas = [];

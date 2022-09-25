@@ -42,6 +42,7 @@ function verificarUsuario () {
             let usuarioActivo = usuarios.find(usuario=>usuario.mail == usuarioIngresado)
             cargaDatosUsuarioActivo (usuarioActivo)
             botonModal ()
+            cargarPeliculas ()
                 Swal.fire({
                     position: 'top',
                     icon: 'success',
@@ -171,9 +172,11 @@ function guardarUsuariosLS () {
 
 function recuperoUsuariosLS () {
     let usuariosLS = JSON.parse(localStorage.getItem("usuariosAlmacenados"));
-    if (usuariosLS.length > 0) {
-        usuarios = Object.values(usuariosLS);
-        console.log (usuarios);
+    if (usuariosLS != null){
+        if (usuariosLS.length > 0) {
+            usuarios = Object.values(usuariosLS);
+            console.log (usuarios);
+        }
     }
 }
 

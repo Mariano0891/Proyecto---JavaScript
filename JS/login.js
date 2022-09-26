@@ -42,6 +42,7 @@ function verificarUsuario () {
             let usuarioActivo = usuarios.find(usuario=>usuario.mail == usuarioIngresado)
             cargaDatosUsuarioActivo (usuarioActivo)
             botonModal ()
+            cargarPeliculas ()
                 Swal.fire({
                     position: 'top',
                     icon: 'success',
@@ -50,7 +51,7 @@ function verificarUsuario () {
                     timer: 3000,
                     })
                 console.log(`bienvenido ${usuarioActivo.nombre}`)
-                console.log(nuevoPeliculas.length)
+                console.log(peliculas.length)
             }
             else {
                 Swal.fire({

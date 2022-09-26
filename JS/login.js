@@ -51,7 +51,7 @@ function verificarUsuario () {
                     timer: 3000,
                     })
                 console.log(`bienvenido ${usuarioActivo.nombre}`)
-                console.log(nuevoPeliculas.length)
+                console.log(peliculas.length)
             }
             else {
                 Swal.fire({

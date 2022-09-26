@@ -27,11 +27,9 @@ function cargarPeliculas() {
     botonComprar.addEventListener ('click', () => {
         let cantidadEntradas = document.getElementById(`cantidadEntradas${pelicula.id}`).value
         if (cantidadEntradas > 0){
-            console.log(pelicula.titulo)
             agregarPelicula(pelicula.id)
             agregarEntradas(cantidadEntradas)
             guardarCompra ()
-            console.log(resumenCompra)
             Toastify({
                 text: "Pelicula seleccionada con exito",
                 offset: {
@@ -73,7 +71,6 @@ async function busquedaInformacionPelicula (direccion){
 function agregarPelicula (id) {
     let peliculaAgregar = peliculas.find(pelicula=> pelicula.id == id)
     resumenCompra.push(peliculaAgregar);
-    console.log (resumenCompra)
     mostrarCompra(peliculaAgregar)
 }
 function agregarEntradas (cantidadEntradas) {

@@ -51,8 +51,6 @@ function verificarUsuario () {
                     showConfirmButton: true,
                     timer: 3000,
                     })
-                console.log(`bienvenido ${usuarioActivo.nombre}`)
-                console.log(peliculas.length)
             }
             else {
                 Swal.fire({

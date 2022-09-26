@@ -43,6 +43,7 @@ function verificarUsuario () {
             cargaDatosUsuarioActivo (usuarioActivo)
             botonModal ()
             cargarPeliculas ()
+            cargarTituloPeliculas ()
                 Swal.fire({
                     position: 'top',
                     icon: 'success',

@@ -1,3 +1,5 @@
+let precioEntradas = 500;
+
 class pelicula{
     constructor(id, titulo, slogan, tituloOriginal, genero, resumen, imagen, puntuacion, fechaLanzamiento){
         this.id = id;

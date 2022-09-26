@@ -4,7 +4,7 @@ const containerPeliculas = document.getElementById('container__peliculas');
 
 const containerModalInfo = document.getElementById('container__modalInfo');
 
-const containerCompra = document.getElementById('container__compra')
+const containerCompra = document.getElementById('container__compra');
 
 function cargarPeliculas() {
     document.getElementById('container__login').style.display = 'none'
@@ -16,6 +16,7 @@ function cargarPeliculas() {
                             <div class="card-body">
                                 <h5 class="card-title">${pelicula.titulo}</h5>
                                 <p class="card-text">${pelicula.slogan}</p>
+                                <input class ="cantidadEntradas" type="text" name="cantidadEntradas" id="cantidadEntradas${pelicula.id}" placeholder="Cant. entradas">
                                 <button type="button" class="btn btn-primary" id="botonInfo${pelicula.id}" data-bs-toggle="modal" data-bs-target="#modal__info">+ info</button>
                                 <a href="#" class="btn btn-primary" id="botonComprar${pelicula.id}">Comprar</a>
                             </div>
@@ -24,25 +25,31 @@ function cargarPeliculas() {
 
     let botonComprar = document.getElementById (`botonComprar${pelicula.id}`)
     botonComprar.addEventListener ('click', () => {
-        console.log(pelicula.titulo)
-        agregarPelicula(pelicula.id)
-        Toastify({
-            text: "Pelicula seleccionada con exito",
-            offset: {
-              x: '45vw', 
-              y: '50vh', 
-            },
-          }).showToast();
-    })
+        let cantidadEntradas = document.getElementById(`cantidadEntradas${pelicula.id}`).value
+        if (cantidadEntradas > 0){
+            console.log(pelicula.titulo)
+            agregarPelicula(pelicula.id)
+            agregarEntradas(cantidadEntradas)
+            guardarCompra ()
+            console.log(resumenCompra)
+            Toastify({
+                text: "Pelicula seleccionada con exito",
+                offset: {
+                x: '45vw', 
+                y: '50vh', 
+                },
+            }).showToast();
+        }
+        })
     })
     
 }
 
 function cargarTituloPeliculas () {
-    let div = document.createElement ('div')
-    div.className = "peliculas__titulo"
-    div.innerHTML = `<h2>Peliculas en Cartelera</h2>`
-    containerPeliculasTitulo.appendChild(div)
+    let h2 = document.createElement ('h2')
+    h2.className = "peliculas__titulo"
+    h2.innerText = `Peliculas en Cartelera`
+    containerPeliculasTitulo.appendChild(h2)
 }
 
 let peliculas = [];
@@ -51,8 +58,6 @@ function crearArrayPeliculas () {
     direccionesBusqueda.forEach(direccion => {
         busquedaInformacionPelicula (direccion)
     })
-    console.log(peliculas)
-    console.log(peliculas.length)
 }
 
 async function busquedaInformacionPelicula (direccion){
@@ -69,8 +74,21 @@ function agregarPelicula (id) {
     let peliculaAgregar = peliculas.find(pelicula=> pelicula.id == id)
     resumenCompra.push(peliculaAgregar);
     console.log (resumenCompra)
-    guardarCompra ()
     mostrarCompra(peliculaAgregar)
+}
+function agregarEntradas (cantidadEntradas) {
+    resumenCompra.push(cantidadEntradas)
+    mostrarCantidadEntradas (cantidadEntradas)
+}
+
+function mostrarCantidadEntradas(cantidadEntradas){
+    let totalCompra = cantidadEntradas * precioEntradas
+    resumenCompra.push(totalCompra)
+    let div = document.createElement ('div')
+    div.className = 'container__entradas'
+    div.innerHTML= `<p>Cantidad de entradas: ${cantidadEntradas}</p>
+                    <p>Costo total: ${totalCompra}</p>`
+    containerCompra.appendChild(div)
 }
 
 function mostrarCompra(peliculaAgregar){

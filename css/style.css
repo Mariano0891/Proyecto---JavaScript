@@ -200,10 +200,28 @@ body {
     justify-content: space-evenly;
 }
 
-
+.peliculas__titulo {
+    text-align: center;
+    height: 40px;
+    margin: 30px;
+    font-size: 40px;
+}
 
 #container__peliculas {
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    grid-row-gap: 10vw;
+    grid-row-gap: 5vw;
+    margin-left: 2%;
+    font-weight: bold;
+}
+
+.cantidadEntradas {
+    width: 80%;
+    border: 1px solid;
+    margin-bottom: 15px;
+    padding: 11px 10px;
+    background: rgb(163, 161, 161);
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
 }

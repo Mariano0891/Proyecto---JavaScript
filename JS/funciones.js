@@ -17,8 +17,27 @@ function cargarPeliculas() {
                                 <h5 class="card-title">${pelicula.titulo}</h5>
                                 <p class="card-text">${pelicula.slogan}</p>
                                 <input class ="cantidadEntradas" type="text" name="cantidadEntradas" id="cantidadEntradas${pelicula.id}" placeholder="Cant. entradas">
-                                <button type="button" class="btn btn-primary" id="botonInfo${pelicula.id}" data-bs-toggle="modal" data-bs-target="#modal__info">+ info</button>
+                                <button type="button" class="btn btn-primary" id="botonInfo${pelicula.id}" data-bs-toggle="modal" data-bs-target="#modal__${pelicula.id}">+ info</button>
                                 <a href="#" class="btn btn-primary" id="botonComprar${pelicula.id}">Comprar</a>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="modal__${pelicula.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">${pelicula.titulo}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5>Titulo original: ${pelicula.tituloOriginal}</h5>
+                                    <p>Genero: ${pelicula.genero}</p>
+                                    <p>Resumen: ${pelicula.resumen}</p>
+
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
                             </div>
                         </div>`
     containerPeliculas.appendChild(div)
